@@ -16,7 +16,9 @@ namespace Grocery
 
 	template <typename Iterator>
 	void insertion_sort(Iterator begin, Iterator end);
-//	void shell_sort(Iterator begin, Iterator end);
+
+	template <typename Iterator>
+	void shell_sort(Iterator begin, Iterator end);
 //	void quick_sort(Iterator begin, Iterator end);
 //	void merge_sort(Iterator begin, Iterator end);
 //	void heap_sort(Iterator begin, Iterator end);

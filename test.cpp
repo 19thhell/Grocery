@@ -74,18 +74,22 @@ void test_string()
 void test_sort()
 {
 	cout << "Testing sort...\n------------------------------\n";
-	vector<int> ans{1,1,3,4,5};
-	vector<int> v1{1,3,1,5,4};
+	vector<int> ans{1,1,2,3,4,4,5,9,11};
+	vector<int> v1{1,3,1,5,4,9,11,4,2};
 	Grocery::bubble_sort(v1.begin(), v1.end());
 	assert(v1 == ans);
 	cout << "BubbleSort test finished.\n";
-	vector<int> v2{1,3,1,5,4};
+	vector<int> v2{1,3,1,5,4,9,11,4,2};
 	Grocery::selection_sort(v2.begin(), v2.end());
 	assert(v2 == ans);
 	cout << "SelectionSort test finished.\n";
-	vector<int> v3{1,3,1,5,4};
+	vector<int> v3{1,3,1,5,4,9,11,4,2};
 	Grocery::insertion_sort(v3.begin(), v3.end());
 	assert(v3 == ans);
 	cout << "InsertionSort test finished.\n";
+	vector<int> v4{1,3,1,5,4,9,11,4,2};
+	Grocery::shell_sort(v4.begin(), v4.end());
+	assert(v4 == ans);
+	cout << "ShellSort test finished.\n";
 	cout << "==============================\n";
 }

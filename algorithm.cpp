@@ -66,3 +66,30 @@ void Grocery::insertion_sort(Iterator begin, Iterator end)
 	}
 	return;
 }
+
+template <typename Iterator>
+void Grocery::shell_sort(Iterator begin, Iterator end)
+{
+	static_assert(std::is_same<std::random_access_iterator_tag, typename std::iterator_traits<Iterator>::iterator_category>::value, "The shell_sort function accepts only random access iterators or raw pointers to an array.\n");
+	auto n = end - begin;
+	decltype(n) k = 1;
+	while ((k << 1) < n)
+		k <<= 1;
+	k--;
+	while (k >= 1)
+	{
+		for (auto iter = begin + k; end - iter >= k; iter += k)
+		{
+			auto pos = iter;
+			auto rec = *pos;
+			while (pos - begin >= k && rec < *(pos - k))
+			{
+				*pos = *(pos - k);
+				pos -= k;
+			}
+			*pos = rec;
+		}
+		k = ((k + 1) >> 1) - 1;
+	}
+	return;
+}
