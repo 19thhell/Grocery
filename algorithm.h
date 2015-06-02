@@ -1,9 +1,9 @@
-#ifndef MY_ALGORITHM_H
-#define MY_ALGORITHM_H
+#ifndef GROC_ALGORITHM_H
+#define GROC_ALGORITHM_H
 #include<iterator>
 #include<type_traits>
 
-namespace MyLib
+namespace Grocery
 {
 	template <typename T>
 	void swap(T &a, T &b);

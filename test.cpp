@@ -23,9 +23,9 @@ int main()
 void test_string()
 {
 	cout << "Testing string...\n------------------------------\n";
-	MyLib::string s1;
-	MyLib::string s2("test");
-	MyLib::string s3(s1);
+	Grocery::string s1;
+	Grocery::string s2("test");
+	Grocery::string s3(s1);
 	cout << "Constructors tests finished.\n";
 	s1 = "test";
 	assert(s1 == "test");
@@ -33,9 +33,9 @@ void test_string()
 	assert(s3 == s2);
 	s2 += "another";
 	assert(s3 != s2);
-	MyLib::string s4 = s1 + s2;
+	Grocery::string s4 = s1 + s2;
 	assert(s4 == "testtestanother");
-	MyLib::string s5 = "123";
+	Grocery::string s5 = "123";
 	s4 = s5 + s4;
 	s2 = "123" + s1;
 	s2 += "abc";
@@ -52,8 +52,8 @@ void test_string()
 	assert(p == s4.end());
 	assert(q != s4.end());
 	cout << "Iterators tests finished.\n";
-	MyLib::string s6("finished.\n");
-	MyLib::string s7;
+	Grocery::string s6("finished.\n");
+	Grocery::string s7;
 	s6 = "Iostream " + s1 + "s " + s6;
 	stringstream ss;
 	ss << s6;
@@ -76,11 +76,11 @@ void test_sort()
 	cout << "Testing sort...\n------------------------------\n";
 	vector<int> ans{1,1,3,4,5};
 	vector<int> v1{1,3,1,5,4};
-	MyLib::bubble_sort(v1.begin(), v1.end());
+	Grocery::bubble_sort(v1.begin(), v1.end());
 	assert(v1 == ans);
 	cout << "BubbleSort test finished.\n";
 	vector<int> v2{1,3,1,5,4};
-	MyLib::selection_sort(v2.begin(), v2.end());
+	Grocery::selection_sort(v2.begin(), v2.end());
 	assert(v2 == ans);
 	cout << "SelectionSort test finished.\n";
 	cout << "==============================\n";

@@ -1,9 +1,9 @@
-#ifndef MY_STRING_H
-#define MY_STRING_H
+#ifndef GROC_STRING_H
+#define GROC_STRING_H
 #include<cstring>
 #include<iostream>
 
-namespace MyLib
+namespace Grocery
 {
 	class string;
 

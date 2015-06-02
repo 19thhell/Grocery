@@ -1,12 +1,12 @@
 #include"string.h"
 
-MyLib::string::string() : size(0), capacity(0)
+Grocery::string::string() : size(0), capacity(0)
 {
 	str = new char[1];
 	str[size] = '\0';
 }
 
-MyLib::string::string(const char c_str[])
+Grocery::string::string(const char c_str[])
 {
 	size = strlen(c_str);
 	capacity = size;
@@ -18,7 +18,7 @@ MyLib::string::string(const char c_str[])
 	str[size] = '\0';
 }
 
-MyLib::string::string(const MyLib::string &s) : size(s.size), capacity(s.size)
+Grocery::string::string(const Grocery::string &s) : size(s.size), capacity(s.size)
 {
 	str = new char[size + 1];
 	for (decltype(size) i = 0; i < size; i++)
@@ -28,12 +28,12 @@ MyLib::string::string(const MyLib::string &s) : size(s.size), capacity(s.size)
 	str[size] = '\0';
 }
 
-MyLib::string::~string()
+Grocery::string::~string()
 {
 	delete[] str;
 }
 
-MyLib::string &MyLib::string::operator=(const char c_str[])
+Grocery::string &Grocery::string::operator=(const char c_str[])
 {
 	auto c_size = strlen(c_str);
 	if (size < c_size)
@@ -48,7 +48,7 @@ MyLib::string &MyLib::string::operator=(const char c_str[])
 	return *this;
 }
 
-MyLib::string &MyLib::string::operator=(const MyLib::string &s)
+Grocery::string &Grocery::string::operator=(const Grocery::string &s)
 {
 	auto s_size = s.size;
 	if (size < s_size)
@@ -63,7 +63,7 @@ MyLib::string &MyLib::string::operator=(const MyLib::string &s)
 	return *this;
 }
 
-MyLib::string &MyLib::string::operator+=(const char c_str[])
+Grocery::string &Grocery::string::operator+=(const char c_str[])
 {
 	auto c_size = strlen(c_str);
 	if (c_size == 0)
@@ -87,7 +87,7 @@ MyLib::string &MyLib::string::operator+=(const char c_str[])
 	return *this;
 }
 
-MyLib::string &MyLib::string::operator+=(const MyLib::string &s)
+Grocery::string &Grocery::string::operator+=(const Grocery::string &s)
 {
 	auto s_size = s.size;
 	if (s.size == 0)
@@ -111,12 +111,12 @@ MyLib::string &MyLib::string::operator+=(const MyLib::string &s)
 	return *this;
 }
 
-MyLib::string MyLib::operator+(MyLib::string s, const char c_str[])
+Grocery::string Grocery::operator+(Grocery::string s, const char c_str[])
 {
 	return s += c_str;
 }
 
-MyLib::string MyLib::operator+(const char c_str[], MyLib::string s)
+Grocery::string Grocery::operator+(const char c_str[], Grocery::string s)
 {
 	auto c_size = strlen(c_str);
 	if (c_size == 0)
@@ -131,63 +131,63 @@ MyLib::string MyLib::operator+(const char c_str[], MyLib::string s)
 	return s;
 }
 
-MyLib::string MyLib::operator+(MyLib::string s1, const MyLib::string &s2)
+Grocery::string Grocery::operator+(Grocery::string s1, const Grocery::string &s2)
 {
 	s1 += s2;
 	return s1;
 }
 
-bool MyLib::operator==(const MyLib::string &s, const char c_str[])
+bool Grocery::operator==(const Grocery::string &s, const char c_str[])
 {
 	return strcmp(s.str, c_str) == 0;
 }
 
-bool MyLib::operator==(const char c_str[], const MyLib::string &s)
+bool Grocery::operator==(const char c_str[], const Grocery::string &s)
 {
 	return strcmp(s.str, c_str) == 0;
 }
 
-bool MyLib::operator==(const MyLib::string &s1, const MyLib::string &s2)
+bool Grocery::operator==(const Grocery::string &s1, const Grocery::string &s2)
 {
 	return strcmp(s1.str, s2.str) == 0;
 }
 
-bool MyLib::operator!=(const MyLib::string &s, const char c_str[])
+bool Grocery::operator!=(const Grocery::string &s, const char c_str[])
 {
 	return !(s == c_str);
 }
 
-bool MyLib::operator!=(const char c_str[], const MyLib::string &s)
+bool Grocery::operator!=(const char c_str[], const Grocery::string &s)
 {
 	return !(s == c_str);
 }
 
-bool MyLib::operator!=(const MyLib::string &s1, const MyLib::string &s2)
+bool Grocery::operator!=(const Grocery::string &s1, const Grocery::string &s2)
 {
 	return !(s1 == s2);
 }
 
-MyLib::string::iterator MyLib::string::begin() const
+Grocery::string::iterator Grocery::string::begin() const
 {
 	return str;
 }
 
-MyLib::string::iterator MyLib::string::end() const
+Grocery::string::iterator Grocery::string::end() const
 {
 	return str + size;
 }
 
-MyLib::string::const_iterator MyLib::string::cbegin() const
+Grocery::string::const_iterator Grocery::string::cbegin() const
 {
 	return str;
 }
 
-MyLib::string::const_iterator MyLib::string::cend() const
+Grocery::string::const_iterator Grocery::string::cend() const
 {
 	return str + size;
 }
 
-std::istream &MyLib::operator>>(std::istream &is, MyLib::string &s)
+std::istream &Grocery::operator>>(std::istream &is, Grocery::string &s)
 {
 	char next = is.get();
 	s.size = 0;
@@ -209,7 +209,7 @@ std::istream &MyLib::operator>>(std::istream &is, MyLib::string &s)
 	return is;
 }
 
-std::ostream &MyLib::operator<<(std::ostream &os, const MyLib::string &s)
+std::ostream &Grocery::operator<<(std::ostream &os, const Grocery::string &s)
 {
 	os << s.str;
 	return os;

@@ -1,5 +1,5 @@
 template <typename T>
-void MyLib::swap(T &a, T &b)
+void Grocery::swap(T &a, T &b)
 {
 	T c(a);
 	a = b;
@@ -7,7 +7,7 @@ void MyLib::swap(T &a, T &b)
 }
 
 template <typename Iterator>
-void MyLib::bubble_sort(Iterator begin, Iterator end)
+void Grocery::bubble_sort(Iterator begin, Iterator end)
 {
 	static_assert(std::is_same<std::random_access_iterator_tag, typename std::iterator_traits<Iterator>::iterator_category>::value, "The bubble_sort function accepts only random access iterators or raw pointers to an array.\n");
 	bool swapped = false;
@@ -19,7 +19,7 @@ void MyLib::bubble_sort(Iterator begin, Iterator end)
 			if (*iter > *(iter + 1))
 			{
 				swapped = true;
-				MyLib::swap(*iter, *(iter + 1));
+				Grocery::swap(*iter, *(iter + 1));
 			}
 		}
 	}
@@ -28,7 +28,7 @@ void MyLib::bubble_sort(Iterator begin, Iterator end)
 }
 
 template <typename Iterator>
-void MyLib::selection_sort(Iterator begin, Iterator end)
+void Grocery::selection_sort(Iterator begin, Iterator end)
 {
 	static_assert(std::is_same<std::random_access_iterator_tag, typename std::iterator_traits<Iterator>::iterator_category>::value, "The selection_sort function accepts only random access iterators or raw pointers to an array.\n");
 	auto n = end - begin;
@@ -42,7 +42,7 @@ void MyLib::selection_sort(Iterator begin, Iterator end)
 		}
 		auto iter = begin + n - 1;
 		if (elem != iter)
-			MyLib::swap(*elem, *iter);
+			Grocery::swap(*elem, *iter);
 		n--;
 	}
 	while (n > 0);
