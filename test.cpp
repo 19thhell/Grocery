@@ -83,5 +83,9 @@ void test_sort()
 	Grocery::selection_sort(v2.begin(), v2.end());
 	assert(v2 == ans);
 	cout << "SelectionSort test finished.\n";
+	vector<int> v3{1,3,1,5,4};
+	Grocery::insertion_sort(v3.begin(), v3.end());
+	assert(v3 == ans);
+	cout << "InsertionSort test finished.\n";
 	cout << "==============================\n";
 }
