@@ -87,9 +87,21 @@ void test_sort()
 	Grocery::insertion_sort(v3.begin(), v3.end());
 	assert(v3 == ans);
 	cout << "InsertionSort test finished.\n";
+	struct wrap {
+		static unsigned int getNext(unsigned int k) {
+			unsigned int bit = 1;
+			while ((bit << 1) < k)
+				bit <<= 1;
+			return bit - 1;
+		};
+	};
 	vector<int> v4{1,3,1,5,4,9,11,4,2};
-	Grocery::shell_sort(v4.begin(), v4.end());
+	Grocery::shell_sort(v4.begin(), v4.end(), wrap::getNext);
 	assert(v4 == ans);
 	cout << "ShellSort test finished.\n";
+	vector<int> v5{1,3,1,5,4,9,11,4,2};
+	Grocery::quick_sort(v5.begin(), v5.end());
+	assert(v5 == ans);
+	cout << "QuickSort test finished.\n";
 	cout << "==============================\n";
 }

@@ -67,15 +67,12 @@ void Grocery::insertion_sort(Iterator begin, Iterator end)
 	return;
 }
 
-template <typename Iterator>
-void Grocery::shell_sort(Iterator begin, Iterator end)
+template <typename Iterator, typename GetNextK>
+void Grocery::shell_sort(Iterator begin, Iterator end, GetNextK getNext)
 {
 	static_assert(std::is_same<std::random_access_iterator_tag, typename std::iterator_traits<Iterator>::iterator_category>::value, "The shell_sort function accepts only random access iterators or raw pointers to an array.\n");
 	auto n = end - begin;
-	decltype(n) k = 1;
-	while ((k << 1) < n)
-		k <<= 1;
-	k--;
+	auto k = getNext(n);
 	while (k >= 1)
 	{
 		for (auto iter = begin + k; end - iter >= k; iter += k)
@@ -89,7 +86,37 @@ void Grocery::shell_sort(Iterator begin, Iterator end)
 			}
 			*pos = rec;
 		}
-		k = ((k + 1) >> 1) - 1;
+		k = getNext(k);
 	}
 	return;
+}
+
+template <typename Iterator>
+void Grocery::quick_sort(Iterator begin, Iterator end)
+{
+	static_assert(std::is_same<std::random_access_iterator_tag, typename std::iterator_traits<Iterator>::iterator_category>::value, "The quick_sort function accepts only random access iterators or raw pointers to an array.\n");
+	if (begin == end)
+		return;
+	Iterator pivot = begin + (end - begin) / 2;
+	auto pivotVal = *pivot;
+	decltype(end - begin) distL = 1, distR = end - begin - 1;
+	Grocery::swap(*begin, *pivot);
+	while (distL <= distR)
+	{
+		while (*(begin + distL) < pivotVal)
+			distL++;
+		while (*(begin + distR) > pivotVal)
+			distR--;
+		if (distL <= distR)
+		{
+			Grocery::swap(*(begin + distL), *(begin + distR));
+			distL++;
+			distR--;
+		}
+	}
+	Grocery::swap(*begin, *(begin + distR));
+	if (distR > 0)
+		quick_sort(begin, begin + distR);
+	if (end - begin - distR > 0)
+		quick_sort(begin + distR + 1, end);
 }
