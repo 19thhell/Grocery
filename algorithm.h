@@ -3,12 +3,24 @@
 #include<iterator>
 #include<type_traits>
 #include<stack>
+#include<vector>
+#include<algorithm>
 
 namespace Grocery
 {
-	template <typename T>
-	void swap(T &a, T &b);
+	//Basic accessories
+	template <typename T> inline
+	void swap(T &a, T &b)
+	{
+		if (&a != &b)
+		{
+			T temp = a;
+			a = b;
+			b = temp;
+		}
+	}
 
+	//Sorting algorithms
 	template <typename Iterator>
 	void bubble_sort(Iterator begin, Iterator end);
 
@@ -23,7 +35,9 @@ namespace Grocery
 
 	template <typename Iterator>
 	void quick_sort(Iterator begin, Iterator end);
-//	void merge_sort(Iterator begin, Iterator end);
+	
+	template <typename Iterator>
+	void merge_sort(Iterator begin, Iterator end);
 //	void heap_sort(Iterator begin, Iterator end);
 //	void bucket_sort(Iterator begin, Iterator end);
 }

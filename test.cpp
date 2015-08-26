@@ -6,6 +6,8 @@
 #include<sstream>
 #include<vector>
 #include<list>
+#include<algorithm>
+#include<ctime>
 using namespace std;
 
 void test_string();
@@ -13,6 +15,7 @@ void test_sort();
 
 int main()
 {
+	srand(time(0));
 	cout << "Start testing module:\n==============================\n";
 	test_string();
 	test_sort();
@@ -74,16 +77,23 @@ void test_string()
 void test_sort()
 {
 	cout << "Testing sort...\n------------------------------\n";
-	vector<int> ans{1,1,2,3,4,4,5,9,11};
-	vector<int> v1{1,3,1,5,4,9,11,4,2};
+	vector<int> ans;
+	for (int i = 0; i < 15; i++)
+		ans.push_back(i);
+	vector<int> init = ans;
+	random_shuffle(init.begin(), init.end());
+//	vector<int> ans{0, 1, 2, 4, 5, 7, 8, 9};
+//	vector<int> ans{0, 1, 2, 3, 4, 5, 6, 7};
+//	vector<int> init{0, 2, 4, 6, 1, 3, 5, 7};
+	vector<int> v1 = init;
 	Grocery::bubble_sort(v1.begin(), v1.end());
 	assert(v1 == ans);
 	cout << "BubbleSort test finished.\n";
-	vector<int> v2{1,3,1,5,4,9,11,4,2};
+	vector<int> v2 = init;
 	Grocery::selection_sort(v2.begin(), v2.end());
 	assert(v2 == ans);
 	cout << "SelectionSort test finished.\n";
-	vector<int> v3{1,3,1,5,4,9,11,4,2};
+	vector<int> v3 = init;
 	Grocery::insertion_sort(v3.begin(), v3.end());
 	assert(v3 == ans);
 	cout << "InsertionSort test finished.\n";
@@ -95,13 +105,17 @@ void test_sort()
 			return bit - 1;
 		};
 	};
-	vector<int> v4{1,3,1,5,4,9,11,4,2};
+	vector<int> v4 = init;
 	Grocery::shell_sort(v4.begin(), v4.end(), wrap::getNext);
 	assert(v4 == ans);
 	cout << "ShellSort test finished.\n";
-	vector<int> v5{1,3,1,5,4,9,11,4,2};
+	vector<int> v5 = init;
 	Grocery::quick_sort(v5.begin(), v5.end());
 	assert(v5 == ans);
 	cout << "QuickSort test finished.\n";
+	vector<int> v6 = init;
+	Grocery::merge_sort(v6.begin(), v6.end());
+	assert(v6 == ans);
+	cout << "MergeSort test finished.\n";
 	cout << "==============================\n";
 }
