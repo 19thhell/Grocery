@@ -3,8 +3,7 @@
 #include<cstring>
 #include<iostream>
 
-namespace Grocery
-{
+namespace Grocery {
 	class string;
 
 	string operator+(string s, const char c_str[]);
@@ -22,8 +21,7 @@ namespace Grocery
 	std::istream &operator>>(std::istream &is, string &s);
 	std::ostream &operator<<(std::ostream &os, const string &s);
 
-	class string
-	{
+	class string {
 		private:
 			typedef char* iterator;
 			typedef const char* const_iterator;

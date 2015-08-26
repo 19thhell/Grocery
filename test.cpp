@@ -1,6 +1,6 @@
 //#define NDEBUG
 #include"string.h"
-#include"algorithm.h"
+#include"sort.h"
 #include<cassert>
 #include<iostream>
 #include<sstream>
@@ -13,8 +13,7 @@ using namespace std;
 void test_string();
 void test_sort();
 
-int main()
-{
+int main() {
 	srand(time(0));
 	cout << "Start testing module:\n==============================\n";
 	test_string();
@@ -23,8 +22,7 @@ int main()
 	return 0;
 }
 
-void test_string()
-{
+void test_string() {
 	cout << "Testing string...\n------------------------------\n";
 	Grocery::string s1;
 	Grocery::string s2("test");
@@ -74,8 +72,7 @@ void test_string()
 	cout << "==============================\n";
 }
 
-void test_sort()
-{
+void test_sort() {
 	cout << "Testing sort...\n------------------------------\n";
 	vector<int> ans;
 	for (int i = 0; i < 15; i++)
@@ -117,5 +114,9 @@ void test_sort()
 	Grocery::merge_sort(v6.begin(), v6.end());
 	assert(v6 == ans);
 	cout << "MergeSort test finished.\n";
+	vector<int> v7 = init;
+	Grocery::heap_sort(v7.begin(), v7.end());
+	assert(v7 == ans);
+	cout << "HeapSort test finished.\n";
 	cout << "==============================\n";
 }

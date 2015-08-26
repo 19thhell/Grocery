@@ -1,19 +1,16 @@
-#ifndef GROC_ALGORITHM_H
-#define GROC_ALGORITHM_H
+#ifndef GROC_SORT_H
+#define GROC_SORT_H
 #include<iterator>
 #include<type_traits>
 #include<stack>
 #include<vector>
 #include<algorithm>
 
-namespace Grocery
-{
+namespace Grocery {
 	//Basic accessories
 	template <typename T> inline
-	void swap(T &a, T &b)
-	{
-		if (&a != &b)
-		{
+	void swap(T &a, T &b) {
+		if (&a != &b) {
 			T temp = a;
 			a = b;
 			b = temp;
@@ -38,9 +35,11 @@ namespace Grocery
 	
 	template <typename Iterator>
 	void merge_sort(Iterator begin, Iterator end);
-//	void heap_sort(Iterator begin, Iterator end);
+
+	template <typename Iterator>
+	void heap_sort(Iterator begin, Iterator end);
 //	void bucket_sort(Iterator begin, Iterator end);
 }
 
-#include "algorithm.cpp"
+#include "sort.cpp"
 #endif
