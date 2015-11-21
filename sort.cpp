@@ -186,11 +186,11 @@ void heapify(Iterator begin, Iterator end) {
 	}
 	while (true) {
 		size_t parent = (index - 1) / 2;
-		size_t larger = index;
+		size_t child = index;
 		if (index < size - 1 && *(begin + index) < *(begin + index + 1)) {
-			++larger;
+			++child;
 		}
-		if (*(begin + parent) < *(begin + larger)) {
+		if (*(begin + parent) < *(begin + child)) {
 			sink(begin, end, parent);
 		}
 		if (index > 1) {
