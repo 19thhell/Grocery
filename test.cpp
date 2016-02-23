@@ -1,25 +1,41 @@
 //#define NDEBUG
-#include"string.h"
-#include"sort.h"
-#include<cassert>
-#include<iostream>
-#include<sstream>
-#include<vector>
-#include<list>
-#include<algorithm>
-#include<ctime>
+#include "primer.h"
+#include "string.h"
+#include "sort.h"
+#include <cassert>
+#include <iostream>
+#include <sstream>
+#include <vector>
+#include <list>
+#include <algorithm>
+#include <ctime>
 using namespace std;
 
+void test_str_blob();
 void test_string();
 void test_sort();
 
 int main() {
 	srand(time(0));
 	cout << "Start testing module:\n==============================\n";
+	test_str_blob();
 	test_string();
 	test_sort();
 	cout << "All tests passed.\n";
 	return 0;
+}
+
+void test_str_blob() {
+	cout << "Testing StrBlob...\n------------------------------\n";
+	Grocery::StrBlob b1;
+	{
+		Grocery::StrBlob b2 = {"a", "b", "c"};
+		b1 = b2;
+		b2.push_back("d");
+	}
+	assert(b1.size() == 4);
+	cout << "Shared pointer tests finished.\n";
+	cout << "==============================\n";
 }
 
 void test_string() {
